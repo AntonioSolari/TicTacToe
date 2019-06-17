@@ -13,7 +13,6 @@ function App() {
       return;
     }
     const newSquares = squares;
-    console.log(newSquares);
     newSquares[i] = turnX ? "X" : "O";
     setSquares(newSquares);
     setTurnX(prevTurn => !prevTurn);
