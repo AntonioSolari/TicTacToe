@@ -1,7 +1,9 @@
 import React from "react";
 import StyledSquare from "../styledComponents/styledSquare";
-function Square() {
-  return <StyledSquare />;
+function Square(props) {
+  return <StyledSquare onClick={props.onClick}>
+      {props.value}
+  </StyledSquare>;
 }
 
 export default Square;
