@@ -3,6 +3,7 @@ import Board from "./components/Board";
 import Game from "./styledComponents/styledGame";
 import Title from "./styledComponents/styledTitle";
 import { calculateWinner } from "./calculateWinner";
+import Restart from "./styledComponents/styledReset"
 function App() {
   const size = 9;
   const [squares, setSquares] = useState(Array(size).fill(null));
@@ -17,10 +18,16 @@ function App() {
     setSquares(newSquares);
     setTurnX(prevTurn => !prevTurn);
   }
+  function restartGame()
+  {
+    const cleanBoard=Array(size).fill(null);
+    setSquares(cleanBoard);
+  }
   return (
     <Game>
       <Title>TicTacToe</Title>
       <Board squares={squares} onClick={i => handleClick(i)} />
+      <Restart onClick={restartGame}>Restart</Restart>
     </Game>
   );
 }
