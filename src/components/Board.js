@@ -1,10 +1,14 @@
-import styled from "styled-components";
-import React, {useState} from 'react'
-import Square from './Square'
+import React from "react";
+import Square from "./Square";
+import StyledBoard from "../styledComponents/styledBoard";
+function Board(props) {
+  return (
+    <StyledBoard>
+      {props.squares.map(() => (
+        <Square />
+      ))}
+    </StyledBoard>
+  );
+}
 
- export default styled.div`
-  display: flex;
-  width: 150px;
-  height: 150px;
-  flex-wrap: wrap;
-`;
+export default Board;
