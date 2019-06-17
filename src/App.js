@@ -17,7 +17,6 @@ function App() {
     newSquares[i] = turnX ? "X" : "O";
     setSquares(newSquares);
     setTurnX(prevTurn => !prevTurn);
-    console.log(turnX);
   }
   return (
     <Game>
