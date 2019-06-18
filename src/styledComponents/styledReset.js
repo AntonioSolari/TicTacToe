@@ -8,4 +8,5 @@ export default styled.button`
   display: inline-block;
   box-sizing: border-box;
   margin-top:15px;
+  display:${props=>props.display};
 `;
