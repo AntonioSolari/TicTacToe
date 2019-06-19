@@ -1,18 +1,42 @@
 export function calculateWinner(squares) {
-  const winningCombinations = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
+  let winningCombinations = [];
+  let winningRow = [];
+  let winningColumns = [];
+  let winningDiagonalA = [];
+  let winningDiagonalB = [];
+  const squaresLength = Math.sqrt(squares.length);
+  for (let i = 0; i < squaresLength; i++) {
+    winningRow = [];
+    for (let j = 0; j < squaresLength; j++) {
+      winningRow.push(i * squaresLength + j);
+    }
+    if (i < squaresLength) {
+      winningDiagonalA.push(winningRow[i]);
+      winningDiagonalB.push(winningRow[winningRow.length - 1 - i]);
+    }
+    winningCombinations.push(winningRow);
+  }
+  for (let i = 0; i < squaresLength; i++) {
+    let winningColumn = winningCombinations.map(combination => combination[i]);
+    winningColumns.push(winningColumn);
+  }
+  winningCombinations.push(...winningColumns);
+  winningCombinations.push(winningDiagonalA);
+  winningCombinations.push(winningDiagonalB);
   for (let i = 0; i < winningCombinations.length; i++) {
-    const [a, b, c] = winningCombinations[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return true;
+    if (squares[winningCombinations[i][0]]) {
+      for (let j = 0; j < squaresLength - 1; j++) {
+        if (
+          squares[winningCombinations[i][j]] ===
+          squares[winningCombinations[i][j + 1]]
+        ) {
+          if (j === squaresLength - 2) {
+            return true;
+          }
+        } else {
+          break;
+        }
+      }
     }
   }
   return null;

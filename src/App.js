@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Board from "./components/Board";
 import Game from "./styledComponents/styledGame";
 import Title from "./styledComponents/styledTitle";
@@ -6,7 +6,7 @@ import { calculateWinner } from "./calculateWinner";
 import Restart from "./styledComponents/styledReset";
 import GameInfo from "./styledComponents/styledGameInfo";
 function App() {
-  const size = 9;
+  const size = 25;
   const [squares, setSquares] = useState(Array(size).fill(null));
   const [isX, setTurnX] = useState(true);
   const [winRoundX, setWinRoundX] = useState(0);
